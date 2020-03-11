@@ -15,7 +15,7 @@ _Saya dengan senang hati jika anda memiliki pertanyaan, namun biasakan diri anda
 -------------
 
 **Selamat datang di panduan cepat membuat bot sosial media ini!**<br/>
-Panduan ini tidak membahas lengkap tentang pembuatan bot sampai ke akar, karena tujuan utama dari panduan ini adalah untuk mendeploy bot secara cepat kurang dari 3 jam. Pengembangan bot akan diserahkan sepenuhnya kepada pembaca. Panduan lengkap akan dibuat di situs ini, ketika panduan lengkap sudah dirilis, saya akan memberi kabar di [akun Facebook pribadi saya](https://fb.me/auficertepaja).
+Panduan ini tidak membahas lengkap tentang pembuatan bot sampai ke akar, karena tujuan utama dari panduan ini adalah untuk mendeploy bot secara cepat (Paling cepat kurang lebih 2-3 jam). Pengembangan bot akan diserahkan sepenuhnya kepada pembaca. Panduan lengkap akan dibuat di situs ini, ketika panduan lengkap sudah dirilis, saya akan memberi kabar di [akun Facebook pribadi saya](https://fb.me/auficertepaja).
 
 Outline panduan pembuatan bot ini melingkupi:
 - Pemrograman di **Python**;
@@ -24,7 +24,7 @@ Outline panduan pembuatan bot ini melingkupi:
 - Menaruh program bot di tempat hosting **Heroku** agar tidak perlu menyalakan dan menggoreng komputer anda karena harus nyala 24 jam x 7 hari; dan
 - Moderasi posting.
 
-Kalau kalian mengkategorikan diri kalian sebagai professional (dalam artian membuat bot dengan skala yang lebih besar secara vertikal), anda bisa juga membaca bagian professional notes.
+Kalau kalian mengkategorikan diri kalian sebagai professional (dalam artian membuat bot dengan skala yang lebih besar secara vertikal), anda bisa juga membaca bagian professional notes<sup>#TODO</sup>.
 
 Ketika saya sudah jago bikin bot di JavaScript, nanti saya perbaharui deh.
 
@@ -150,6 +150,8 @@ pip 19.0.3 from /home/maufirf/anaconda3/lib/python3.7/site-packages/pip (python 
 ```
 Jika anda menggunakan Anaconda, maka anda juga dapat menggunakan package manager dari anaconda, `conda` untuk mengunduh library.
 
+#### Library wajib
+
 Sekarang, kita akan menginstall library yang kita butuhkan. Sebelumnya, mari kita lihat apa saja yang kita unduh. Anda dapat menginstall yang anda butuhkan saja, semuanya, atau tidak sama sekali. Terserah sih:
 
 - **[Tweepy](https://tweepy.org)**<br/>Tweepy adalah library API wrapper yang kita gunakan untuk menggunakan API yang diberikan oleh Twitter untuk kita. Dengan API yang diberikan itu, kita bisa nge-tweet, mencari, atau menghapus tweet menggunakan pemrograman. Untuk menginstall Tweepy, kita bisa mengetik ini di konsol untuk menginstall:
@@ -179,6 +181,10 @@ import facebook
 import discord
 ```
 Jika tidak ada error, maka semuanya bekerja dengan betul.
+
+#### Library opsional
+
+- **DOTENV (.env)**<br/>DOTENV adalah library yang berguna untuk mengimpor environment variable (sebuah nilai yang disimpan dalam komputer anda dan dapat digunakan di seluruh bagian sistem). Kita menggunakan library ini untuk dengan aman menyimpan access token secara aman yang akan dibahas di bagian berikutnya.
 
 ## Social Media Linking
 
@@ -266,5 +272,118 @@ _Kenapa sampai detik ini belum ada speedrun dapetin access token discord, njir?_
 #### Twitter
 
 Twitter adalah social network yang juga ramah kepada bot developer. Twitter mengakui keberadaan bot di jaringannya dan ingin membantu anda sepenuhnya baik urusan bisnis ataupun cuma sekedar hobi. Tidak seperti Discord, Twitter akan memfilter developer yang mendaftar tergantung tujuannya. Twitter juga akan mewawancarakan data apa saja yang ingin anda dapatkan dari Twitter.
+
+Mari masuk ke [portal pengembang Twitter](https://developer.twitter.com) dan lakukan login. Setelah login, jika anda belum mendaftarkan akun developer untuk akun twitter anda, akan ada link bertuliskan "**Apply**" di pojok kanan atas situsnya, klik itu. Lalu akan muncul laman dengan title "Apply for access". Tekan tombol <kbd>Apply for a developer account</kbd>.
+
+![Lobi portal pengembang Twitter](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-lobby.png)
+<p class="img-subtitle">Lobi portal pengembang Twitter</p>
+
+![Laman apply as developer](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-apply.png)
+<p class="img-subtitle">Laman apply as developer
+twitter-lobby.png)</p>
+
+Setelah anda menekan Apply, anda akan diminta untuk menentukan kategori pengembang seperti apa anda ini. Sesuaikan dengan kebutuhan anda, namun yang cocok dengan panduan ini, anda akan mendaftar untuk "**Making a bot**".
+
+![Lobi portal pengembang Twitter](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-apply-category.png)
+<p class="img-subtitle">Lobi portal pengembang Twitter</p>
+
+Setelah itu, anda akan diminta untuk memverifikasi nomor telefon anda dan melengkapi beberapa data pribadi anda yang belum dilengkapi sebagai salah satu syarat menjadi pengembang. Berikutnya, anda juga akan diminta untuk merinci data apa saja yang ingin anda dapatkan, bagaimana cara anda mengelolanya, dan juga bagaimana anda menjaganya. teruskan sampai anda menyelesaikan wawancaranya.
+
+![Lobi portal pengembang Twitter](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-apply-interview.png)
+<p class="img-subtitle">Laman pengisian data diri</p>
+
+![Laman final pasca wawancara pengembang Twitter](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-apply-finish.png)
+<p class="img-subtitle">Laman final pasca wawancara</p>
+
+Anda akan dihubungi setelah beberapa lama. Pengalaman saya, saya menerima email setelah satu hari, dan teman saya kurang dari satu hari. Setelah itu, halaman awal dari portal pengembang akan sedikit berubah. Anda langsung dapat menuju apps. Pilih dropdown dengan nama anda di sebelahnya yang berada di pojok kanan atas, lalu pilih "**Apps**".
+
+Setelah anda memasuki laman apps, anda akan melihat opsi untuk membuat aplikasi baru. di pojok kanan atas. Konsep Aplikasi di Twitter ini mirip dengan aplikasi discord, hanya saja Twitter menyamakan bot dengan user biasa. Secara teknis, anda dapat memiliki lebih dari satu bot dengan satu aplikasi saja, seperti yang saya terapkan sekarang kepada [Bottlebot1904](https://twitter.com/bottlebot1904) dan [Bot](https://twitter.com/really_a_bot). Anda akan diminta informasi seperti nama aplikasi, deskripsi, dan situs aplikasi anda. Sisanya opsional.
+
+![Laman aplikasi anda](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-appslist.png)
+<p class="img-subtitle">Laman aplikasi anda</p>
+
+![Laman aplikasi baru](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-twitter-newapps.png)
+<p class="img-subtitle">Laman aplikasi baru</p>
+
+_**PERHATIAN!** Access Token yang akan anda dapatkan dengan cara berikut ini hanya berlaku untuk akun anda yang sekarang sedang log in di situs pengembang ini. Jika anda ingin menggunakan aplikasi yang anda buat untuk lebih dari satu bot, ada caranya lagi namun saya belum sempat menulis tutorialnya yang nanti akan ada di Professional Notes<sup>#TODO</sup>._
+
+Anda akan dibawa ke laman aplikasi anda. Perhatikan terdapat menu "**Keys and Tokens**". Tekan dan anda akan dialihkan ke laman token anda. Terdapat 4 jenis kode di sana:
+
+- API key [_tidak rahasia_], pengenal untuk memberitahu twitter "aplikasi yang ini lho" saat user diminta izin untuk akses akunnya oleh aplikasi anda
+- API secret [_rahasia_], Pemverifikasi API key yang anda miliki.
+- **Access Token [_sangat rahasia_]**, Kode akses yang memberikan akses untuk tweet, menghapus tweet, dan lain-lain kepada siapapun yang memilikinya untuk satu akun
+- **Access Token Secret [_sangat rahasia_]**, pemverifikasi Access Token anda.
+
+_**PERHATIAN!** Anda mungkin harus menggenerasi access token terlebih dahulu untuk pertama kali. Jangan lupa untuk langsung menyimpan access token sesegera mungkin karena Twitter hanya akan memperlihatkannya sekali seumur hidup setiap regenerasi access token._
+
+
+![Laman API key aplikasi anda dan access token akun anda](assets/img/devsite-twitter-apppanel-token.png)
+<p class="img-subtitle">Laman API key aplikasi anda dan access token akun anda</p>
+
+#### Facebook
+
+Di kalangan pengembang Facebook indie, terdapat running joke kalau Mark Zuckerberg sebagai pendiri Facebook adalah makhluk asing yang menyerupai reptil humanoid atau bahkan cyborg karena ke-kaku-annya dalam memoderasi Facebook, atau bahkan sesederhana _menjadi manusia, secara harafiah_.
+
+Seringkali laman-laman bot _shitpost_ di facebook seperti [ShitPostBot5000](https://web.facebook.com/shitpostbotv4/) menjadi korban dari _zucc's ban hammer_. Halaman lamanya sudah musnah dari Facebook karena berbagai faktor:
+- Konten insensitif, seperti shitpost tentang 9/11 atau holocaust yang digenerasi secara otomatis tanpa ada niat memang ingin mengenerasi itu. Salah usernya, sih, ngupload konten itu buat dimasukkan ke databasea agar dipilih.
+- Keyword "bot" dalam nama atau posting. [Kami](https://web.facebook.com/profile.php?id=132502367359575&ref=br_rs) sempat berspekulasi jika zucc akan mem-ban semua page yang mengandung kata itu. Namun kelihatannya tidak begitu karena banyak laman bot shitpost dengan "bot" di dalamnya masih hidup di detik ini.
+- dan beberapa faktor yang bahkan tolol banget kayak diban tanpa alasan sama sekali tahu-tahu 7 hari ga bisa posting atau page dihapus.
+
+Facebook is botphobic. Facts.
+
+<p align="center"><img src="https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/zuccsucc.gif";alt="ZUCCSUCC.GIV"></p>
+<p class="img-subtitle">ZUCCSUCC.GIF</p>
+
+Selain menjadi tempat yang paling keras bagi para bot di jagat sosial media, Facebook kurang bersahabat bagi para hobbyist yang ingin melakukan automasi di facebook. Facebook sudah memiliki banyak kasus _data breach_ seperti [kasus Cambridge Analytica](https://en.wikipedia.org/wiki/Cambridge_Analytica#Privacy_issues) yang membuatnya tidak mau lagi hal itu terjadi. Karenanya, facebook memperketat pengawasan akses data lewat API mereka.
+
+Akses ini sangat berdampak baik bagi para pebisnis dan hobbyist. hanya saja, keputusan facebook ini lebih merugikan para hobbyist karena untuk dapat mendapatkan access token, kita harus memiliki bisnis betulan karena kita harus mengatasnamakan aplikasi kita dengan bisnis kita. Meski begitu, masih ada jalan untuk mengakali hal itu.
+
+_**PERHATIAN!** Cara mendapatkan access token berikut ini akan menggunakan tools yang dibuat oleh [Max](https://maxbots.ddns.net), seorang public figure dari komunitas [The Bot Appreciation Society](https://botappreciationsociety.github.io/). Akal-akalan tanpa menggunakan tools yang dibuat orang lain ada di Professional Notes<sup>#TODO</sup>. Saya tidak akan sekalipun tutorial untuk membuat facebook menerima lamaran laman bisnis karena susah banget. Kalau mau coba ya silahkan, bodo amat kalau berhasil terus mau flexing ke sini._
+
+Karena kita akan menggunakan tools untuk mendapatkan access token, kita harus memperhatikan cara kerja dari tools yang kita gunakan:
+
+1. Token tool akan meminta kita untuk login ke facebook
+2. Kita diminta untuk memilih **Halaman facebook** mana yang ingin didapatkan access tokennya
+3. Kita dimintai izin manakah yang akan kita berikan. Ada tiga izin, kita berikan semua.
+4. Kita akan diberi access token **akun pribadi** kita, dengan tools itu kita akan meng-expand izin ke **halaman facebook kita**.
+
+**Karena itu, perlu diingat, anda harus sudah memiliki satu halaman untuk dijadikan halaman bot.**
+
+Mari kita kunjungi tools untuk mendapatkan access token yang berada di [maxbots.ddns.net/token](https://maxbots.ddns.net/token/).
+
+![Token tool oleh Paintmin/Max](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot.png)
+<p class="img-subtitle">Token tool oleh Paintmin/Max</p>
+
+Pertama-tama, kita harus log in menggunakan link yang ada di step 1, terlihat jelas kata "**here**" yang menarik untuk diklik. Setelah anda klik, anda akan diminta untuk memilih halaman mana saja yang akan anda ingin dapatkan access tokennya. Anda akan disodorkan permintaan izin, ada tiga, berikan ketiganya. Lalu saat sudah selesai, sebelum menekan OK, persiapkan diri untuk langsung meng-copy URL saat halaman berubah menjadi hanya satu kata di pojok kiri atas bertuliskan "**Success**".
+
+![Pilih laman](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot-pageselect.png)
+<p class="img-subtitle">Pilih laman</p>
+
+![Berikan izin](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot-permissionselect.png)
+<p class="img-subtitle">Berikan izin</p>
+
+![Bersiaplah](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot-prefinalization.png)
+<p class="img-subtitle">Bersiaplah. Setelah anda menekan OK, arahkan mouse anda ke address bar dan sesegera mungkin copy URL di address bar.</p>
+
+![COPY SEGERA!](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot-copyhere.png)
+<p class="img-subtitle">Segera copy URL yang ada di address bar saat laman ini muncul</p>
+
+Jika anda tiba-tiba melihat tulisan ini muncul, anda sudah terlambat:
+
+![Anda terlambat](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot-copyfail.png)
+<p class="img-subtitle">Anda terlambat, namun jangan kuatir.</p>
+
+Anda cukup menekan tombol back dan mengulang sampai mendapatkan URL tersebut. URL tersebut akan berisi Access Token akun pribadi anda. Untuk memperluas access token untuk dipakai di halaman facebook, anda harus mem-paste URL tadi ke tools tadi di step 2. Setelah anda paste, tekan <kbd>Complete Step 2</kbd>
+
+Jika anda mengalami masalah error di step 2, kemungkinan anda memberikan izin tadi di smartphone. Solusinya, perbaiki bagian awal URL sehingga mirip seperti link yang dicontohkan di deskripsi Step 2.
+
+Di Step 3, akan muncul nama-nama halaman yang tadi anda pilih. Untuk setiap halaman tersebut, anda pilih halamannya dan tekan <kbd>Complete Step 3</kbd> untuk mendapatkan access tokennya. Jika anda memiliki 2 laman, maka lakukan itu dua kali, kalau 3 ya 3 kali, dan seterusnya sejumlah halaman yang anda pilih.
+
+![Sukses](https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/tools-maxbot-final.png)
+<p class="img-subtitle">Sukses, anda bisa menyalin access token anda di bar yang paling bawah.</p>
+
+### Menjaga kerahasiaan access token anda
+
+
 
 _Ini adalah akhir dari panduan ini untuk sementara. Sisanya sedang diketik._
