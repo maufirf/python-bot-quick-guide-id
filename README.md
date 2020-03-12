@@ -335,7 +335,7 @@ Seringkali laman-laman bot _shitpost_ di facebook seperti [ShitPostBot5000](http
 
 Facebook is botphobic. Facts.
 
-<p align="center"><img src="https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/zuccsucc.gif";alt="ZUCCSUCC.GIV"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/zuccsucc.gif";alt="ZUCCSUCC.GIV"/></p>
 <p class="img-subtitle">ZUCCSUCC.GIF</p>
 
 Selain menjadi tempat yang paling keras bagi para bot di jagat sosial media, Facebook kurang bersahabat bagi para hobbyist yang ingin melakukan automasi di facebook. Facebook sudah memiliki banyak kasus _data breach_ seperti [kasus Cambridge Analytica](https://en.wikipedia.org/wiki/Cambridge_Analytica#Privacy_issues) yang membuatnya tidak mau lagi hal itu terjadi. Karenanya, facebook memperketat pengawasan akses data lewat API mereka.
