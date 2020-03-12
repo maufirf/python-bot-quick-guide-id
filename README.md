@@ -32,6 +32,7 @@ Prasyarat pembuatan bot ini adalah (syarat-syarat ini terserah mau anda penuhi a
 - Pengetahuan dasar pemrograman dengan bahasa **Python** berserta Pythonnya sendiri di komputer anda. Python dapat anda unduh [di situsnya](https://www.python.org/downloads/), namun saya juga menyarankan untuk lebih memilih [mengunduh Anaconda](https://www.anaconda.com/distribution/) dibanding Python biasa, karena Anaconda adalah Python biasa namun sebagian besar tools sudah lengkap bersama unduhannya.
 - Akun di salah satu situs tujuan deployment anda, **[Facebook](https://fb.com)**, **[Twitter](https://twitter.com)**, atau **[Discord](https://discordapp.com)**.
 - Akun di tempat hosting **[Heroku](https://heroku.com)**
+- Version control manager **[Git](https://git-scm.com)**. Jika ingin, anda juga bisa sekaligus menggunakan GUI dari Git, saya menyarankan [Github Desktop](https://desktop.github.com/).
 - Ke-anti-mager-an untuk membaca dokumentasi. Serius.
 - _(OPSIONAL)_ Pengetahuan dasar **pemrograman berbasis objek**. Sebenarnya nggak perlu banget sih, tapi kalau bisa yah lebih enak jelasinnya.
 - _(OPSIONAL)_ Kartu debit dengan saldo setidaknya Rp.16.000,00. Kalau lebih mah terserah, kalau pake kartu kredit mah silahkan, mau teriak ke saya ***"PERSETAN KARO ATURAN, AKU IKI WONG SUGIH"*** mah saya terima. CATATAN: tidak akan menggunakan saldo yang ada miliki kok, kecuali kalau anda wong sugih ya, sila...
@@ -155,21 +156,21 @@ Jika anda menggunakan Anaconda, maka anda juga dapat menggunakan package manager
 Sekarang, kita akan menginstall library yang kita butuhkan. Sebelumnya, mari kita lihat apa saja yang kita unduh. Anda dapat menginstall yang anda butuhkan saja, semuanya, atau tidak sama sekali. Terserah sih:
 
 - **[Tweepy](https://tweepy.org)**<br/>Tweepy adalah library API wrapper yang kita gunakan untuk menggunakan API yang diberikan oleh Twitter untuk kita. Dengan API yang diberikan itu, kita bisa nge-tweet, mencari, atau menghapus tweet menggunakan pemrograman. Untuk menginstall Tweepy, kita bisa mengetik ini di konsol untuk menginstall:
-    ```
+    ```bash
     pip install tweepy
     ```
     Anda bisa mempelajarinya lebih lanjut di [dokumentasinya](http://docs.tweepy.org/en/latest/index.html).
 - **[Facebook-SDK](https://facebook-sdk.readthedocs.io/en/latest/)**<br/>Facebook-SDK adalah library API wrapper yang kita gunakan untuk menggunakan API yang diberikan oleh Facebook. Kurang lebih sama seperti Tweepy, hanya saja untuk facebook. Untuk menginstall, anda dapat mengetik ini di konsol untuk menginstall:
-    ```
+    ```bash
     pip install facebook-sdk
     ```
     Baca [dokumentasinya](https://facebook-sdk.readthedocs.io/en/latest/install.html) untuk informasi lebih lanjut.
 - **[Discord.py](https://discordpy.readthedocs.io/en/latest/)**<br/>sama kayak sebelumnya tapi buat Discord. nih, capek juga gue ngetiknya:
-    ```
+    ```bash
     pip install -U discord.py
     ```
     Jika ingin menggunakan voice supportnya, silahkan gunakan yang ini:
-    ```
+    ```bash
     pip install -U discord.py[voice]
     ```
     baca [dokumentasinya](https://discordpy.readthedocs.io/en/latest/intro.html#installing) untuk informasi yang lebih lengkap.
@@ -184,7 +185,10 @@ Jika tidak ada error, maka semuanya bekerja dengan betul.
 
 #### Library opsional
 
-- **DOTENV (.env)**<br/>DOTENV adalah library yang berguna untuk mengimpor environment variable (sebuah nilai yang disimpan dalam komputer anda dan dapat digunakan di seluruh bagian sistem). Kita menggunakan library ini untuk dengan aman menyimpan access token secara aman yang akan dibahas di bagian berikutnya.
+- **[DOTENV (.env)](https://pypi.org/project/python-dotenv/)**<br/>DOTENV adalah library yang berguna untuk mengimpor environment variable (sebuah nilai yang disimpan dalam komputer anda dan dapat digunakan di seluruh bagian sistem). Kita menggunakan library ini untuk dengan aman menyimpan access token secara aman yang akan dibahas di bagian berikutnya. Anda bisa install dengan mengetik:
+```bash
+pip install -U python-dotenv
+```
 
 ## Social Media Linking
 
@@ -384,6 +388,107 @@ Di Step 3, akan muncul nama-nama halaman yang tadi anda pilih. Untuk setiap hala
 
 ### Menjaga kerahasiaan access token anda
 
+Setelah mendapatkan access token, sekarang kita hanya perlu menyimpannya. Sebenarnya menaruh access token langsung di kodingannya (hal ini yang disebut sebagai hard-coding) tidak salah selama keperluannya hanya untuk offline deployment (mengetes atau mendeploy aplikasi di komputer kita). Tapi, hal ini menjadi masalah besar kalau kita akan menaruh kodingan kita di repositori daring, _meskipun repositorinya privat_.
 
+Solusinya, kita menyimpan access token kita bukan di dalam file di komputer hosting, tapi di komputer hostingrnya itu sendiri. Artinya, kita tetap menggunakan access token dari file untuk pemakaian offline, dan kita juga bisa menggunakannya tanpa file untuk pemakaian online. Bagaimanakah cara kita mengupload satu folder project yang filenya banyak tanpa mengupload file access token? jawabnya, **Git**!
+
+Git adalah version control manager. Git berguna untuk mencatat perubahan yang terjadi di satu project kodingan dan membantu kolaborasi pemrograman tim. Namun, fitur yang ingin kita soroti bukanlah itu, melainkan fitur `.gitignore`nya. `.gitignore` adalah file yang mendefinisikan file apa saja yang sengaja tidak akan diperhatikan perubahannya dan tidak akan masuk repositori. Biasanya kita menggunakan `.gitignore` untuk tidak mengunggah file-file program yang sudah dicompile karena ukurannya biasanya nggak nanggung-nanggung. Lagipula, setiap orang yang terlibat di project seharusnya sudah bisa mengkompilasi programnya sendiri dari sumber kode.
+
+_**PERINGATAN!** Tutorial setelah ini akan menggunakan library opsional `python-dotenv` untuk menyimpan dan menggunakan access token dengan envrionment variable. Sebenarnya bisa menggunakan library bawaan `json` dan menggunakan file format json, namun tingkat keamanan dan kemudahannya lebih rendah daripada menggunakan environment variabel. Lihat Professional Notes<sup>#TODO</sup>._
+
+Menggunakan `.gitignore`, kita akan membuat Git tidak memperhatikan file access token sehingga filenya tidak akan ikut terunggah, namun bagaimana kita mendapatkan access token di komputer hosting jika filenya tidak diikutsertakan? **Environtment Variable** adalah jawabannya. Setiap sistem operasi memiliki fitur untuk menyimpan nilai dalam variabel. Contohnya:
+
+- Anda dapat membuka interpreter python di terminal dengan mengetik `python` saja. Komputer mengenali lokasi program python karena sebelumnya saat instalasi, python mendaftarkan dirinya untuk masuk ke dalam variabel `PATH` yang berisi direktori-direktori program siap jalan. _Jangan otak-atik variabel itu kalau belum ngerti cara makenya._ Aslinya, anda harus mengetik direktori lengkap di terminal untuk menjalankan program python seperti mengetik `C:/Program Files/Python/bin/python.exe`. 'Kan capek.
+- Anda buka Windows run dengan menekan <kbd>Windows key</kbd>+<kbd>R</kbd> dan masukkan `%APPDATA%`. Seketika Windows akan membuka file explorer dengan direktori `C:/windows/users/namauser/appdata` yang disimpan dalam variabel `%APPDATA%` di windows.
+
+Untuk sekarang, mari siapkan file untuk menyimpan access tokennya (entahlah gue setiap nulis kata _mari_ gue makin lama makin bisa denger [soundtrack yang biasanya dipake pas di acara resep di tv](https://www.youtube.com/watch?v=rjLl8-YK7zw)). Kita akan membuat file `.env`. Dan `env` disini bukanlah ekstensi file, melainkan nama file itu sendiri, sama seperti `.gitignore`. Tanda titik di awal itu sebenarnya kode bagi beberapa sistem operasi, terutama yang UNIX-based seperti Linux sebagai hidden.
+
+Kalau begitu, langsung saja kita buat file `.env`. Isi dari `.env` itu setiap barisnya terdiri dari dua bagian: _key_ dan _value_. formatnya kurang lebih begini:
+```json
+GENERAL_PASSWORD:"UIdb)&B#!@734b)S_!"
+API_URL:"https://api.maufirf.me/"
+API_ENDPOINT_BOTS:"bots?"
+API_ENDPOINT_CALLBACK:"callback?"
+ACCESS_TOKEN:"lNUNOsKuVXvXIDOZRG7Ro5lSdwzx4zQ9JwVfTaJUIVhG1iCKAmhWGWN0fTryrbao"
+```
+ketika kita panggil, contohnya, variabel `GENERAL_PASSWORD`, maka kita akan mendapatkan `UIdb)&B#!@734b)S_!` sebagai jawaban dari panggilan. Memanggil key, akan diberi value. Untuk kasus kita, kurang lebih isi `.env` akan terlihat seperti ini:
+
+`.env` file:
+```json
+ACCESS_TOKEN_DISCORD="xxxxxxxxxxxxxxxxxxx"
+
+TWITTER_API_KEY="xxxxxxxxxxxxxxxxxxx"
+TWITTER_API_SECRET="xxxxxxxxxxxxxxxxxxx"
+ACCESS_TOKEN_TWITTER="xxxxxxxxxxxxxxxxxxx"
+TWITTER_ACCESS_TOKEN_SECRET="xxxxxxxxxxxxxxxxxxx"
+
+ACCESS_TOKEN_FACEBOOK="xxxxxxxxxxxxxxxxxxx"
+```
+
+nanti kalian bisa isi dengan access token kalian sendiri. Sekarang. Setelah itu, kita coba untuk kita gunakan di python. Berikut ini adalah file python yang kita gunakan untuk mengimpor access token ke python:
+
+`key_loader.py` file:
+```python
+from dotenv import load_dotenv # Import library untuk mengakses file .env
+import os # Import library untuk mengambil variabel dari komputer
+from enum import Enum # Yang ini udah ikutin aja dulu
+
+load_dotenv() # Memproses file .env semudah memanggil fungsi ini aja
+
+class GENERAL_ACCESS_TOKEN(Enum):
+    DISCORD = os.getenv("ACCESS_TOKEN_DISCORD")
+    TWITTER = os.getenv("ACCESS_TOKEN_TWITTER")
+    FACEBOOK = os.getenv("ACCESS_TOKEN_FACEBOOK")
+```
+
+mari kita bedah satu-satu.
+
+```python
+from dotenv import load_dotenv
+```
+Kita mengimpor fungsi `load_dotenv()` dari library `dotenv`. Fungsi tersebut gunanya adalah memproses variabel yang disimpan pada file `.env` sehingga komputer menganggap variabel-variabel tersebut sudah ditaruh di environment variabel komputer.
+
+```python
+import os
+```
+Kita mengimpor library bawaan python, `os`. Library ini lazim digunakan untuk segala hal yang spesifik berkaitan dengan sistem operasi. Dalam hal ini kita akan mengambil environment variabel komputer ke python menggunakan salah satu fungsi dari `os`, yakni `getenv()`. Cara lazim menggunakannya adalah `os.getenv('NAMA_KEY_DI_ENVIRONMENT_VARIABLE')`.
+
+```python
+from enum import Enum
+```
+Kita juga mengimpor library bawaan python satu lagi yakni `enum`. Yang kita import adalah spesifik satu kelas python yang bernama `Enum`. Mungkin sebagian dari anda baru pertama dengar konsep kelas, namun untuk sekarang _terima saja dulu_. Agak panjang menjelaskan apa itu kelas, namun lebih singkat menjelaskan apa itu kelas `Enum`. `Enum` di python merupakan kelas untuk mendefinisikan konstanta sekaligus menjaga nilainya tidak berubah sama sekali sehingga kita bisa menggunakan nilai suatu variabel dengan variabel lainnya dengan nilai yang diskrit.
+
+```python
+load_dotenv()
+```
+Disini kita menggunakan fungsi yang tadi kita import. Semudah itu ktia memasukkan variabel di file `.env` ke environment variable komputer.
+
+```python
+class GENERAL_ACCESS_TOKEN(Enum):
+    DISCORD = os.getenv("ACCESS_TOKEN_DISCORD")
+    TWITTER = os.getenv("ACCESS_TOKEN_TWITTER")
+    FACEBOOK = os.getenv("ACCESS_TOKEN_FACEBOOK")
+```
+Kita membuat sebuah kelas `Enum` yang kita namakan `GENERAL_ACCESS_TOKEN`. Kelas enum ini memiliki tiga nilai konstanta:
+
+- Access token Discord
+- Access token Twitter
+- Access token Facebook
+
+Bisa kita perhatikan juga kita menggunakan fungsi `os.gentenv()` untuk mengambil variabel dari environment variable komputer ke python, lalu menyimpannya ke dalam enumerasi dalam `GENERAL_ACCESS_TOKEN`.
+
+Untuk mencobanya apakah berhasil atau tidak, anda bisa memasukkan line ini di line terakhir di paling luar:
+```python
+print(GENERAL_ACCESS_TOKEN.DISCORD.value)
+print(GENERAL_ACCESS_TOKEN.TWITTER.value)
+print(GENERAL_ACCESS_TOKEN.FACEBOOK.value)
+```
+lalu menjalankan programnya lewat terminal dengan mengetik
+```bash
+python key_loader.py
+```
+Terminal akan mengeluarkan tiga nilai access token yang sudah anda masukkan di file `.env`.
+
+***Lihat file `key_loader.py` di [repositori saya](https://github.com/parampaa2/python-bot-quick-guide-id/blob/master/projects/example/key_loader.py)***
 
 _Ini adalah akhir dari panduan ini untuk sementara. Sisanya sedang diketik._

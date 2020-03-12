@@ -1,0 +1,5 @@
+# File berisi access token
+.env
+
+# File kompilasi program
+__pycahce__
