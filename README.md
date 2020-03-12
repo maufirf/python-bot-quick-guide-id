@@ -253,7 +253,7 @@ Pertama, buatlah aplikasi discord jika belum membuatnya. Terdapat tombol <kbd>Ne
 
 Penting, namun tidak terlalu relevan dengan access token bot kita: setelah membuat aplikasi, perhatikan bagian yang bertuliskan Client ID dan Client Secret anda. Bagian itu rahasia namun dengan tingkat yang berurutan tidak terlalu rahasia dan lumayan rahasia. Usahakan tidak menunjukkan Client Secret anda pada siapapun bagaimanapun. Terlebih, jika anda mengetahui aplikasi (tidak hanya bot) anda dibajak, sesegera mungkin regenerasikan client secret anda dengan menggunakan tombol <kbd>Regenerate </kbd> di bagian Client Secret. Kedua hal itu anda gunakan jika anda butuh data dari user untuk diintegrasikan ke aplikasi anda, yang dalam hal ini
 
-<p align="center"><img src="https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-discord-clientidsecret.png" alt="Client ID dan Client Secret"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/parampaa2/python-bot-quick-guide-id/master/assets/img/devsite-discord-clientidsecret.png" alt="Client ID dan Client Secret"/></p>
 <p class="img-subtitle">Bagian Client ID dan Client Secret yang telah disensor, namun tetap menunjukkan pola kode utamanya.</p>
 
 Sekarang, lihat di panel bagian kiri dan pilih opsi **<svg viewBox="0 0 22 22" name="Jigsaw" width="16px" height="16px" color="currentColor"><path fill="currentColor" d="M20.5,11H19V7c0-1.1-0.9-2-2-2h-4V3.5C13,2.1,11.9,1,10.5,1S8,2.1,8,3.5V5H4C2.9,5,2,5.9,2,7v3.8h1.5 c1.5,0,2.7,1.2,2.7,2.7S5,16.2,3.5,16.2H2V20c0,1.1,0.9,2,2,2h3.8v-1.5c0-1.5,1.2-2.7,2.7-2.7s2.7,1.2,2.7,2.7V22H17 c1.1,0,2-0.9,2-2v-4h1.5c1.4,0,2.5-1.1,2.5-2.5S21.9,11,20.5,11L20.5,11z"></path></svg> Bot** untuk membuat user bot baru.
